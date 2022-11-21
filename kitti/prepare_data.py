@@ -373,7 +373,7 @@ def extract_frustum_data(idx_filename, split, output_filename, viz=False,
                 colormap='gnuplot', scale_factor=1, figure=fig)
             raw_input()
 
-def get_box3d_dim_statistics(idx_filename, type_whitelist=['Car','Pedestrian','Cyclist'],split='train'):
+def get_box3d_dim_statistics(idx_filename, type_whitelist=['Car','Pedestrian','Truck'],split='train'):
     ''' Collect and dump 3D bounding box statistics '''
     dataset = kitti_object(os.path.join(ROOT_DIR,'dataset/KITTI/object'))
     dimension_list = []
@@ -409,7 +409,7 @@ def get_box3d_dim_statistics(idx_filename, type_whitelist=['Car','Pedestrian','C
             with open(os.path.join(BASE_DIR, split + '_' + type + '_' + 'box3d_mean_dimensions.pickle'), 'wb') as fp:
                 pickle.dump(dimensions_mean, fp)
 
-def print_box3d_statistics(idx_filename,type_whitelist=['Car','Pedestrian','Cyclist'],split='train'):
+def print_box3d_statistics(idx_filename,type_whitelist=['Car','Pedestrian','Truck'],split='train'):
     ''' Collect and dump 3D bounding box statistics '''
     dataset = kitti_object(os.path.join(ROOT_DIR,'dataset/KITTI/object'))
 
@@ -470,7 +470,7 @@ def print_box3d_statistics(idx_filename,type_whitelist=['Car','Pedestrian','Cycl
 
 def read_det_file(det_filename):
     ''' Parse lines in 2D detection output files '''
-    det_id2str = {1:'Pedestrian', 2:'Car', 3:'Cyclist'}
+    det_id2str = {1:'Pedestrian', 2:'Car', 3:'Truck'}
     id_list = []
     type_list = []
     prob_list = []
@@ -634,7 +634,7 @@ def write_2d_rgb_detection(det_filename, split, result_dir):
 
 def cluster():
     imagesets_file = os.path.join(BASE_DIR, 'image_sets/train.txt')
-    all_type = ['Car','Pedestrian','Cyclist']
+    all_type = ['Car','Pedestrian','Truck']
     get_box3d_dim_statistics(imagesets_file,all_type,split='train')
     '''
     train.txt
@@ -676,7 +676,7 @@ if __name__=='__main__':
         type_whitelist = ['Car']
         output_prefix = 'frustum_caronly_'
     else:
-        type_whitelist = ['Car', 'Pedestrian', 'Cyclist']
+        type_whitelist = ['Car', 'Pedestrian', 'Truck']
         output_prefix = 'frustum_carpedcyc_'
 
     if args.with_image:

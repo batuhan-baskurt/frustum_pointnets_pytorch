@@ -604,7 +604,7 @@ def get_box3d_dim_statistics(idx_filename):
 
 def read_det_file(det_filename):
     ''' Parse lines in 2D detection output files '''
-    det_id2str = {1: 'Pedestrian', 2: 'Car', 3: 'Cyclist'}
+    det_id2str = {1: 'Pedestrian', 2: 'Car', 3: 'Truck'}
     id_list = []
     type_list = []
     prob_list = []
@@ -795,7 +795,7 @@ if __name__ == '__main__':
         type_whitelist = ['Car']
         output_prefix = 'frustum_caronly_'
     else:
-        type_whitelist = ['Car', 'Pedestrian', 'Cyclist']
+        type_whitelist = ['Car', 'Pedestrian', 'Truck']
         output_prefix = 'frustum_carpedcyc_'
 
     if args.gen_train:

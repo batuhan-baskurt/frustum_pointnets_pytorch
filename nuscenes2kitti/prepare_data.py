@@ -752,7 +752,7 @@ def get_box3d_dim_statistics(idx_filename):
     ''' Collect and dump 3D bounding box statistics '''
     pass
 
-def print_box3d_statistics(idx_filename,type_whitelist=['Car','Pedestrian','Cyclist'],split='v1.0-mini', sensor='CAM_FRONT'):
+def print_box3d_statistics(idx_filename,type_whitelist=['Car','Pedestrian','Truck'],split='v1.0-mini', sensor='CAM_FRONT'):
     ''' Collect and dump 3D bounding box statistics '''
     dataset = nuscenes2kitti_object(os.path.join(ROOT_DIR,'dataset/nuScenes2KITTI'),split, sensor_list=['CAM_FRONT'])
 
@@ -861,7 +861,7 @@ if __name__ == '__main__':
         type_whitelist = ['Car']
         output_prefix = 'frustum_caronly_'
     else:
-        type_whitelist = ['Car', 'Pedestrian', 'Cyclist']
+        type_whitelist = ['Car', 'Pedestrian', 'Truck']
         output_prefix = 'frustum_carpedcyc_'
 
     if args.CAM_FRONT_only:

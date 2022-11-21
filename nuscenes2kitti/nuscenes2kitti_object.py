@@ -141,7 +141,7 @@ def show_image_with_boxes(img, objects, calib, sensor, show3d=True,linewidth=2,c
     img2 = np.copy(img) # for 3d bbox
     type2color = {'Pedestrian':0,
                   'Car':1,
-                  'Cyclist':2}
+                  'Truck':2}
     for obj in objects:
         if obj.type=='DontCare':continue
         if obj.type not in type2color.keys():continue
