@@ -303,7 +303,9 @@ def compute_box_3d(obj, P):
             corners_3d: (8,3) array in in rect camera coord.
     '''
     # compute rotational matrix around yaw axis
-    R = roty(obj.ry)    
+    R = roty(obj.ry)   
+    R_tilt = rotx(0.2)
+    R = np.dot(R,R_tilt) 
 
     # 3d bounding box dimensions
     l = obj.l;
